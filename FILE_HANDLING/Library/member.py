@@ -1,6 +1,6 @@
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
-from myprint import printbar
+from myprint import print_bar
 
 MEMBERSHIP_PERIOD=3
 
@@ -14,7 +14,7 @@ class Member:
         self.joining = joining
         self.expiry = expiry
 
-    def printall(self):
+    def print_all(self):
         print(str(self.memberid).ljust(3),
               self.name[0:15].ljust(15),
               self.address[0:15].ljust(15),
@@ -22,18 +22,18 @@ class Member:
               self.joining.strftime("%d-%b-%y").ljust(15),
               self.expiry.strftime("%d-%b-%y").ljust(15))
 
-    def printfull(self):
-        printbar()
+    def print_full(self):
+        print_bar()
         print("Member #",self.memberid)
         print("Name: ", self.name)
         print("Address: ", self.address)
         print("Phone: ",self.phone)
         print("Joined on ", self.joining.strftime("%d-%b-%y"),
                   " membership ends on ", self.expiry.strftime("%d-%b-%y"))
-        printbar()
+        print_bar()
 
 
-def createmember(memberid):
+def create_member(memberid):
     name = input("Enter the name: ");
     address = input("Enter the address: ")
     phone = input("Enter the phone: ")
@@ -42,7 +42,7 @@ def createmember(memberid):
     return Member(memberid,name,address,phone,joining,expiry)
 
 
-def printheader():
+def print_header():
     print("="*80)
     print("id".ljust(3),
           "name".ljust(15),

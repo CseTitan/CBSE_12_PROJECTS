@@ -4,7 +4,7 @@ It provides all the functionalities to work with the members table
 
 """
 
-from member import createmember,printheader
+from member import create_member,print_header
 from datafile import DataFile
 from datetime import datetime,timedelta
 
@@ -15,18 +15,18 @@ MEMBERSHIP_END_CHECK_DURATION=10*24*3600
 
 
 def addmember():
-    members = memberTable.getRecords()
+    members = memberTable.get_records()
     if len(members) == 0:
         memberid = 0
     else:
         memberid = members[len(members)-1].memberid + 1
-    member = createmember(memberid)
-    memberTable.addRecord(member)
+    member = create_member(memberid)
+    memberTable.add_record(member)
     print("Operation Successful")
 
 
 def getandprintmemberlistbyname():
-    members = memberTable.getRecords()
+    members = memberTable.get_records()
     results = []
     if len(members) == 0:
         print("No Members found")
@@ -42,14 +42,14 @@ def getandprintmemberlistbyname():
             print("No matching record")
         else:
             print(len(results), " matching records")
-            printheader()
+            print_header()
             for member in results:
-                member.printall()
+                member.print_all()
     return results
 
 
 def getandprintmemberbyid():
-    members = memberTable.getRecords()
+    members = memberTable.get_records()
     found = False
     position = -1
     if len(members) == 0:
@@ -64,12 +64,12 @@ def getandprintmemberbyid():
         if not found:
             print("No matching record")
         else:
-            members[position].printfull()
+            members[position].print_full()
     return members, found, position
 
 
 def getandprintmemberlistbyaddress():
-    members = memberTable.getRecords()
+    members = memberTable.get_records()
     results = []
     if len(members) == 0:
         print("No Members found")
@@ -85,14 +85,14 @@ def getandprintmemberlistbyaddress():
             print("No matching record")
         else:
             print(len(results), " matching records")
-            printheader()
+            print_header()
             for member in results:
-                member.printall()
+                member.print_all()
     return results
 
 
 def getandprintmemberlistbyphone():
-    members = memberTable.getRecords()
+    members = memberTable.get_records()
     results = []
     if len(members) == 0:
         print("No Members found")
@@ -105,14 +105,14 @@ def getandprintmemberlistbyphone():
             print("No matching record")
         else:
             print(len(results), " matching records")
-            printheader()
+            print_header()
             for member in results:
-                member.printall()
+                member.print_all()
     return results
 
 
 def getandprintmemberlistendingsoon():
-    members = memberTable.getRecords()
+    members = memberTable.get_records()
     results = []
     if len(members) == 0:
         print("No Members found")
@@ -125,9 +125,9 @@ def getandprintmemberlistendingsoon():
             print("No matching record")
         else:
             print(len(results), " matching records")
-            printheader()
+            print_header()
             for member in results:
-                member.printall()
+                member.print_all()
     return results
 
 

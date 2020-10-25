@@ -2,21 +2,21 @@
 SCREEN_WIDTH = 100
 
 
-def printcenter(s):
+def print_center(s):
     xpos = SCREEN_WIDTH//2
     print((" "*xpos), s)
 
 
-def printbar():
+def print_bar():
     print("="*100)
 
 
-def printbarln():
-    printbar()
+def print_bar_ln():
+    print_bar()
     print()
 
 
-def inputcenter(s):
+def input_center(s):
     xpos = SCREEN_WIDTH // 2
     print((" " * xpos), s, end='')
     return input()

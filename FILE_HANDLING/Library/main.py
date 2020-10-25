@@ -1,33 +1,26 @@
-"""
-    This file is the entry point of our
-    Library Management System For CBSE project for 2020
-"""
-from books import bookmenu
+from books import book_menu
 from members import membermenu
-from myprint import printcenter,inputcenter
+from myprint import print_center, input_center
+
+
 if __name__ == '__main__':
-    '''    
-    It displays the main menu and transfer execution to 'members' module or 'books' module accordingly. After execution of
-    any one of those modules, we come back here to exit the app by pressing 0.
-    
-    '''
     while True:
         print()
-        printcenter("=============================")
-        printcenter("=====Apka Guruji Library=====")
-        printcenter("=============================")
-        printcenter("1. Manage Books/Issue/Return")
-        printcenter("2. Manage Members")
-        printcenter("0. Exit")
+        print_center("=============================")
+        print_center("=====Apka Guruji Library=====")
+        print_center("=============================")
+        print_center("1. Manage Books/Issue/Return")
+        print_center("2. Manage Members")
+        print_center("0. Exit")
         print()
 
-        choice = int(inputcenter("Enter your choice: "))
+        choice = int(input_center("Enter your choice: "))
         if choice == 1:
-            bookmenu()
+            book_menu()
         elif choice == 2:
             membermenu()
         elif choice == 0:
             break
         else:
             print("Invalid choice (Press 0 to exit)")
-    printcenter("GoodBye")
+    print_center("GoodBye")

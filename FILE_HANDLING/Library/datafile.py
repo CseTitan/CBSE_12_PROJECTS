@@ -5,15 +5,15 @@ class DataFile:
     def __init__(self,name):
         self.name=name
 
-    def addRecord(self,record):
-        file  = open(self.name,"ab")
+    def add_record(self, record):
+        file = open(self.name,"ab")
         pickle.dump(record,file)
         file.close()
 
-    def getRecords(self):
+    def get_records(self):
         records = []
         try:
-            file  = open(self.name,"rb")
+            file = open(self.name,"rb")
         except FileNotFoundError:
             return records;
         while True:

@@ -1,4 +1,4 @@
-from book import createbook,printheader
+from book import create_book, print_header
 from datafile import DataFile
 from datetime import datetime
 from members import getandprintmemberbyid
@@ -10,19 +10,19 @@ bookTable = DataFile("books.dat")
 BOOK_ISSUE_PERIOD = 7
 
 
-def addbook():
-    books = bookTable.getRecords()
+def add_book():
+    books = bookTable.get_records()
     if len(books) == 0:
         bookid = 0
     else:
         bookid = books[len(books)-1].bookid + 1
-    book = createbook(bookid)
-    bookTable.addRecord(book)
+    book = create_book(bookid)
+    bookTable.add_record(book)
     print("Operation Successful")
 
 
-def getandprintbookbyid():
-    books = bookTable.getRecords()
+def get_and_print_book_by_id():
+    books = bookTable.get_records()
     found = False
     position = -1
     if len(books) == 0:
@@ -37,12 +37,12 @@ def getandprintbookbyid():
         if not found:
             print("No matching record")
         else:
-            books[position].printfull()
+            books[position].print_full()
     return books, found, position
 
 
-def getandprintbooklist():
-    books = bookTable.getRecords()
+def get_and_print_book_list():
+    books = bookTable.get_records()
     results = []
     if len(books)== 0:
         print("No books found")
@@ -58,14 +58,14 @@ def getandprintbooklist():
                 print("No matching book")
         else:
                 print(len(results) ," matching books")
-                printheader()
+                print_header()
                 for book in results:
-                    book.printall()
+                    book.print_all()
     return results
 
 
-def searchbook():
-    books = bookTable.getRecords()
+def search_book():
+    books = bookTable.get_records()
     if len(books)== 0:
         print("No books found")
     else:
@@ -80,13 +80,13 @@ def searchbook():
                 print("No matching book")
         else:
                 print(len(results) ," matching books")
-                printheader()
+                print_header()
                 for book in results:
-                    book.printall()
+                    book.print_all()
 
 
-def searchbooksissuedbymember():
-    books = bookTable.getRecords()
+def search_books_issued_by_member():
+    books = bookTable.get_records()
     if len(books) == 0:
         print("No records found")
     else:
@@ -99,13 +99,13 @@ def searchbooksissuedbymember():
                 print("currently no books issued to this member")
         else:
                 print(len(results), " matching books")
-                printheader()
+                print_header()
                 for book in results:
-                    book.printall()
+                    book.print_all()
 
 
-def showbooksissuedbydate():
-    books = bookTable.getRecords()
+def show_books_issued_by_date():
+    books = bookTable.get_records()
     if len(books)== 0:
         print("No books found")
     else:
@@ -121,13 +121,13 @@ def showbooksissuedbydate():
                 print("no matching records")
         else:
                 print(len(results), " matching books")
-                printheader()
+                print_header()
                 for book in results:
-                    book.printall()
+                    book.print_all()
 
 
-def showbookstobereturnedtoday():
-    books = bookTable.getRecords()
+def show_books_to_be_returned_today():
+    books = bookTable.get_records()
     if len(books)== 0:
         print("No books found")
     else:
@@ -140,13 +140,13 @@ def showbookstobereturnedtoday():
                 print("No matching records")
         else:
                 print(len(results), " matching books")
-                printheader()
+                print_header()
                 for book in results:
-                    book.printall()
+                    book.print_all()
 
 
-def issuebook():
-    books,found,position = getandprintbookbyid()
+def issue_book():
+    books,found,position = get_and_print_book_by_id()
     if found:
         book = books[position]
         if not book.available:
@@ -156,7 +156,7 @@ def issuebook():
         if found:
             member = members[position];
             if found:
-                member.printall()
+                member.print_all()
                 print("Issue the book \"", book.title , "\" to " , member.name," (Y/N) : ")
                 issueconfirm = input()
                 if issueconfirm.lower() == 'y':
@@ -170,8 +170,8 @@ def issuebook():
                     print("Operation Canceled")
 
 
-def returnbook():
-    books,found,position = getandprintbookbyid()
+def return_book():
+    books,found,position = get_and_print_book_by_id()
     if found:
         book = books[position]
         if book.available:
@@ -185,8 +185,8 @@ def returnbook():
         print("Operation Successful")
 
 
-def deletebook():
-    books, found, position = getandprintbookbyid()
+def delete_book():
+    books, found, position = get_and_print_book_by_id()
     if found:
         print("Delete the record (Y/N) : ")
         issueconfirm = input()
@@ -198,7 +198,7 @@ def deletebook():
             print("Operation Canceled")
 
 
-def bookmenu():
+def book_menu():
     while True:
         print()
         print("============================")
@@ -218,23 +218,23 @@ def bookmenu():
         print("0. Go Back")
         choice = int(input("Enter your choice: "))
         if choice == 1:
-            addbook()
+            add_book()
         elif choice == 2:
-            getandprintbookbyid()
+            get_and_print_book_by_id()
         elif choice == 3:
-            searchbook()
+            search_book()
         elif choice == 4:
-            searchbooksissuedbymember()
+            search_books_issued_by_member()
         elif choice == 5:
-            showbooksissuedbydate()
+            show_books_issued_by_date()
         elif choice == 6:
-            showbookstobereturnedtoday()
+            show_books_to_be_returned_today()
         elif choice == 7:
-            issuebook()
+            issue_book()
         elif choice == 8:
-            returnbook()
+            return_book()
         elif choice == 9:
-            deletebook()
+            delete_book()
         elif choice == 0:
             break
         else:

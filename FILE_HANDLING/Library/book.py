@@ -1,4 +1,6 @@
-from myprint import printbar
+from myprint import print_bar
+
+
 class Book:
     def __init__(self,bookid, title,subject,author,available,issuedto,issuedate,returndate):
         self.bookid = bookid
@@ -10,7 +12,7 @@ class Book:
         self.issuedate = issuedate
         self.returndate = returndate
 
-    def printall(self):
+    def print_all(self):
         print(str(self.bookid).ljust(3),
               self.title[0:15].ljust(15),
               self.subject[0:15].ljust(15),
@@ -20,8 +22,8 @@ class Book:
               (self.issuedate.strftime("%d-%b-%y") if not self.available else "None").ljust(10),
               (self.returndate.strftime("%d-%b-%y") if not self.available else "None").ljust(10))
 
-    def printfull(self):
-        printbar()
+    def print_full(self):
+        print_bar()
         print("Book #",self.bookid)
         print("Title: ", self.title)
         print("Subject: ", self.subject , " Author: " , self.author)
@@ -31,10 +33,10 @@ class Book:
             print("Status: Issued to member#", self.issuedto,
                   " on ", self.issuedate.strftime("%d-%b-%y"),
                   " returns on ", self.returndate.strftime("%d-%b-%y"))
-        printbar()
+        print_bar()
 
 
-def createbook(bookid):
+def create_book(bookid):
     title = input("Enter the book title: ")
     subject = input("Enter the subject: ")
     author = input("Enter the author: ")
@@ -45,7 +47,7 @@ def createbook(bookid):
     return Book(bookid,title,subject,author,available,issuedto,issuedate,returndate)
 
 
-def printheader():
+def print_header():
     print("="*100)
     print("id".ljust(3),
           "title".ljust(15),
