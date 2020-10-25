@@ -1,7 +1,7 @@
 from book import create_book, print_header
 from datafile import DataFile
 from datetime import datetime
-from members import getandprintmemberbyid
+from members import get_and_print_member_by_id
 from dateutil.relativedelta import relativedelta
 
 
@@ -30,7 +30,7 @@ def get_and_print_book_by_id():
     else:
         bookid = int(input("Enter the id: "))
         for book in books:
-            position+=1
+            position += 1
             if bookid == book.bookid:
                 found = True
                 break
@@ -52,7 +52,7 @@ def get_and_print_book_list():
         
         for book in books:
             for word in words:
-                if word in book.title.lower() or word in book.subject.lower() or word in book.author.lower():
+                if word.lower() in book.title.lower() or word in book.subject.lower() or word in book.author.lower():
                     results.append(book)
         if len(results)==0:
                 print("No matching book")
@@ -74,7 +74,7 @@ def search_book():
         results = []
         for book in books:
             for word in words:
-                if word in book.title.lower() or word in book.subject.lower():
+                if word.lower() in book.title.lower() or word in book.subject.lower():
                     results.append(book)
         if len(results)==0:
                 print("No matching book")
@@ -152,7 +152,7 @@ def issue_book():
         if not book.available:
             print("The book is not available")
             return
-        members,found,position = getandprintmemberbyid()
+        members,found,position = get_and_print_member_by_id()
         if found:
             member = members[position];
             if found:

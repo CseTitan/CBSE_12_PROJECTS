@@ -14,7 +14,7 @@ memberTable = DataFile("members.dat")
 MEMBERSHIP_END_CHECK_DURATION=10*24*3600
 
 
-def addmember():
+def add_member():
     members = memberTable.get_records()
     if len(members) == 0:
         memberid = 0
@@ -25,7 +25,7 @@ def addmember():
     print("Operation Successful")
 
 
-def getandprintmemberlistbyname():
+def get_and_print_member_list_by_name():
     members = memberTable.get_records()
     results = []
     if len(members) == 0:
@@ -36,7 +36,7 @@ def getandprintmemberlistbyname():
 
         for member in members:
             for word in words:
-                if word in member.name.lower():
+                if word.lower() in member.name.lower():
                     results.append(member)
         if len(results) == 0:
             print("No matching record")
@@ -48,7 +48,7 @@ def getandprintmemberlistbyname():
     return results
 
 
-def getandprintmemberbyid():
+def get_and_print_member_by_id():
     members = memberTable.get_records()
     found = False
     position = -1
@@ -68,7 +68,7 @@ def getandprintmemberbyid():
     return members, found, position
 
 
-def getandprintmemberlistbyaddress():
+def get_and_print_member_list_by_address():
     members = memberTable.get_records()
     results = []
     if len(members) == 0:
@@ -79,7 +79,7 @@ def getandprintmemberlistbyaddress():
 
         for member in members:
             for word in words:
-                if word in member.address.lower():
+                if word.lower() in member.address.lower():
                     results.append(member)
         if len(results) == 0:
             print("No matching record")
@@ -91,7 +91,7 @@ def getandprintmemberlistbyaddress():
     return results
 
 
-def getandprintmemberlistbyphone():
+def get_and_print_member_list_by_phone():
     members = memberTable.get_records()
     results = []
     if len(members) == 0:
@@ -111,7 +111,7 @@ def getandprintmemberlistbyphone():
     return results
 
 
-def getandprintmemberlistendingsoon():
+def get_and_print_member_list_ending_soon():
     members = memberTable.get_records()
     results = []
     if len(members) == 0:
@@ -131,8 +131,8 @@ def getandprintmemberlistendingsoon():
     return results
 
 
-def editmemberdetails():
-    members,found,position = getandprintmemberbyid()
+def edit_member_details():
+    members,found,position = get_and_print_member_by_id()
     if found:
         member = members[position]
         print("Input new values (leave blank to keep previous value)")
@@ -149,8 +149,8 @@ def editmemberdetails():
         print("Operation Successful")
 
 
-def deletemember():
-    members, found, position = getandprintmemberbyid()
+def delete_member():
+    members, found, position = get_and_print_member_by_id()
     member = members[position]
     if found:
         print("Delete ", member.name , " (Y/N) : ")
@@ -163,7 +163,7 @@ def deletemember():
             print("Operation Canceled")
 
 
-def membermenu():
+def member_menu():
     while True:
         print()
         print("==============================")
@@ -181,21 +181,21 @@ def membermenu():
         print("0. Go Back")
         choice = int(input("Enter your choice: "))
         if choice == 1:
-            addmember()
+            add_member()
         elif choice == 2:
-            getandprintmemberlistbyname()
+            get_and_print_member_list_by_name()
         elif choice == 3:
-            getandprintmemberbyid()
+            get_and_print_member_by_id()
         elif choice == 4:
-            getandprintmemberlistbyaddress()
+            get_and_print_member_list_by_address()
         elif choice == 5:
-            getandprintmemberlistbyphone()
+            get_and_print_member_list_by_phone()
         elif choice == 6:
-            getandprintmemberlistendingsoon()
+            get_and_print_member_list_ending_soon()
         elif choice == 7:
-            editmemberdetails()
+            edit_member_details()
         elif choice == 8:
-            deletemember()
+            delete_member()
         elif choice == 0:
             break
         else:

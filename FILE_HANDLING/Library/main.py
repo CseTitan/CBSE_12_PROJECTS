@@ -1,5 +1,5 @@
 from books import book_menu
-from members import membermenu
+from members import member_menu
 from myprint import print_center, input_center
 
 
@@ -18,7 +18,7 @@ if __name__ == '__main__':
         if choice == 1:
             book_menu()
         elif choice == 2:
-            membermenu()
+            member_menu()
         elif choice == 0:
             break
         else:
