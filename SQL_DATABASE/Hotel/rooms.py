@@ -13,7 +13,7 @@ def add_room(database, cursor):
     except mysql.connector.Error as err:
         create_table(database)
         cursor.execute(query)
-        database.coomit()
+        database.commit()
     print("Operation Successful")
 
 
