@@ -6,7 +6,7 @@ import mysql.connector
 HOST = "localhost"
 USER = "scott"
 PASSWORD = "scotttiger"
-DATABASE = "hotel"
+DATABASE = "library"
 
 
 def get_database():

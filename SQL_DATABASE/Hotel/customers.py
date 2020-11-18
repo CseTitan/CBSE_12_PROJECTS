@@ -38,8 +38,8 @@ def show_records(cursor, query):
             return
         print_header()
         for record in records:
-            room = Customer().create_from_record(record)
-            room.print_all()
+            customer = Customer().create_from_record(record)
+            customer.print_all()
         return records
     except mysql.connector.Error as err:
         print(err)
