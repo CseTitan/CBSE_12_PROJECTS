@@ -104,7 +104,7 @@ def issue_return_menu(database, cursor):
     while True:
         print()
         print("============================")
-        print("==========Books Menu=========")
+        print("======Issue/Return Menu=====")
         print("============================")
         print()
 
