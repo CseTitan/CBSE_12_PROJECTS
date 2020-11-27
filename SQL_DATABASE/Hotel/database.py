@@ -1,6 +1,3 @@
-# WAP to display the name and id of all the records in the ACCESSORIES table, using their feild names.
-
-
 import mysql.connector
 
 HOST = "localhost"
